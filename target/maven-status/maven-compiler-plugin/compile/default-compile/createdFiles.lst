@@ -1,0 +1,5 @@
+com\bezkoder\spring\mongodb\reactive\repository\TutorialRepository.class
+com\bezkoder\spring\mongodb\reactive\controller\TutorialController.class
+com\bezkoder\spring\mongodb\reactive\model\Tutorial.class
+com\bezkoder\spring\mongodb\reactive\service\TutorialService.class
+com\bezkoder\spring\mongodb\reactive\SpringBootMongodbReactiveApplication.class

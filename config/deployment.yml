@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-mongodb-reactive
+  labels:
+    app: spring-boot-mongodb-reactive
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-boot-mongodb-reactive
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: spring-boot-mongodb-reactive
+    spec:
+      containers:
+      - name: spring-boot-mongodb-reactive
+        image: <IMAGE>
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-mongodb-reactive-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: spring-boot-mongodb-reactive
